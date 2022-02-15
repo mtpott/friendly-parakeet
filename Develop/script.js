@@ -34,46 +34,44 @@ var generateBtn = document.querySelector("#generate");
 
 // Write password to the #password input
 function writePassword() {
-  var password = generatePassword();
+  //var password = generatePassword(); 
 
-    function generatePassword(){
+    function charPrompt() {
     var promptClick = window.prompt("How many characters would you like to use in your password? You may choose between 8 and 128 characters. Please enter your choice below.");
-    //if number entered is less than 8 or greater than 128, inform user that their number is not in range
-    if (promptClick < 8 || promptClick > 128) {
+    //if number entered is less than 8 or greater than 128, proceed to lowercase confirm
+    if (promptClick > 8 || promptClick < 128) {
+      (lowCaseConfirm);
+    } else {
         window.alert("Your number is out of our selected range! Please choose again.");
-        //return the function to let the user try again
-        return generatePassword();
+        //break the loop to stop any chance of an infinite loop
     }
     //i confirm whether or not to include lowercase (true/false)
     var lowCaseConfirm = window.confirm("Would you like to use lowercase characters?");
     //if true, inform user they decided to use lowercase characters and return true
     if (lowCaseConfirm) {
         window.alert("You have decided to use lowercase characters.");
-        return true;
     };
     //confirm uppercase characters (true/false)
     var upCaseConfirm = window.confirm("Would you like to use uppercase characters?");
       if (upCaseConfirm) {
       //if true, inform user they decided to use uppercase characters and return true
           window.alert("You have decided to use uppercase characters.");
-          return true;
       };
     //confirm numeric values (true/false)
     var numConfirm = window.confirm("Would you like to use numeric values?");
       if(numConfirm) {
       //if true, inform user they decided to use numeric values and return true
         window.alert("You have decided to use numeric values.");
-        return true;
       };
     //confirm special characters (true/false)
     var charConfirm = window.confirm("Would you like to use special characters?");
     if (charConfirm) {
     //if true, inform user they decided to use special characters and return true
         window.alert("You have decided to use special characters.");
-        return true;
       };
-    }    
-}
+    }
+      return charPrompt();
+  }  
 
   //using the selections above, use the function to create the password with Math.random()
   function getRandomPassword() {
