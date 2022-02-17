@@ -12,6 +12,8 @@
 // when the password is generated
 // the password is either displayed in an ALERT or written to the page
 
+//when i refresh the browser, i do not want my writePassword() function to run UNTIL i click the button. 
+
     var lowCase = "abcdefghijklmnopqrstuvwxyz";
     var upCase = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
     var special = " !#$%&'()*+,-./:;,=>?@[\]^_`{|}~";
@@ -24,12 +26,13 @@
     var numConfirm;
     var charConfirm;
 
+    var password = generatePassword(); 
+
 // Get references to the #generate element
 var generateBtn = document.querySelector("#generate");
 
 // Write password to the #password input
 function writePassword() {
-  //var password = generatePassword(); 
 
     function charPrompt() {
     promptClick = window.prompt("How many characters would you like to use in your password? You may choose between 8 and 128 characters. Please enter your choice below.");
@@ -41,28 +44,28 @@ function writePassword() {
         //break the loop to stop any chance of an infinite loop
     }
     //i confirm whether or not to include lowercase (true/false)
-    lowCaseConfirm = window.confirm("Would you like to use lowercase characters?");
+    lowCaseConfirm = window.confirm("Would you like to use lowercase characters? Select 'OK' to confirm.");
     //if true, inform user they decided to use lowercase characters and return true
     if (lowCaseConfirm) {
         window.alert("You have decided to use lowercase characters.");
         string = string + lowCase;
     };
     //confirm uppercase characters (true/false)
-    upCaseConfirm = window.confirm("Would you like to use uppercase characters?");
+    upCaseConfirm = window.confirm("Would you like to use uppercase characters? Select 'OK' to confirm.");
       if (upCaseConfirm) {
       //if true, inform user they decided to use uppercase characters and return true
           window.alert("You have decided to use uppercase characters.");
           string = string + upCase;
       };
     //confirm numeric values (true/false)
-    numConfirm = window.confirm("Would you like to use numeric values?");
+    numConfirm = window.confirm("Would you like to use numeric values? Select 'OK' to confirm.");
       if(numConfirm) {
       //if true, inform user they decided to use numeric values and return true
         window.alert("You have decided to use numeric values.");
         string = string + num;
       };
     //confirm special characters (true/false)
-    charConfirm = window.confirm("Would you like to use special characters?");
+    charConfirm = window.confirm("Would you like to use special characters? Select 'OK' to confirm.");
     if (charConfirm) {
     //if true, inform user they decided to use special characters and return true
         window.alert("You have decided to use special characters.");
@@ -70,25 +73,23 @@ function writePassword() {
       };
     }
       charPrompt();
+      console.log(generatePassword());
   } 
 
-  //
-
-
-  getRandomPassword();
+  
 
   //using the selections above, use the function to create the password with Math.random()
-  function getRandomPassword() {
+  function generatePassword() {
     
     var randomString;
-    var password = "";
+    var ranPassword = "";
 
     //use a for loop and Math.random() to generate a random string
     for (var i = 0; i < promptClick; i++) {
         randomString = Math.floor(Math.random() * string.length);
-        password += string[randomString];
+        ranPassword += string[randomString];
     }
-    return password;
+    return ranPassword;
   }
 
   var passwordText = document.querySelector("#password");
@@ -96,10 +97,11 @@ function writePassword() {
   passwordText.value = password;
 
 
-
 // Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
+
 
 //create password!  
 writePassword();
   
+generatePassword();
