@@ -6,7 +6,7 @@
     var upCase = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
     var special = " !#$%&'()*+,-./:;,=>?@[\]^_`{|}~";
     var num = "1234567890";
-    var string = "";
+    var finalString = "";
 
     var promptClick;
     var lowCaseConfirm;
@@ -47,7 +47,7 @@ function writePassword() {
     //if true, inform user they decided to use lowercase characters and return true
     if (lowCaseConfirm) {
         window.alert("You have decided to use lowercase characters.");
-        string = string + lowCase;
+        finalString = finalString + lowCase;
     };
 
     //confirm uppercase characters (true/false)
@@ -55,7 +55,7 @@ function writePassword() {
       if (upCaseConfirm) {
       //if true, inform user they decided to use uppercase characters and return true
           window.alert("You have decided to use uppercase characters.");
-          string = string + upCase;
+          finalString = finalString + upCase;
       };
 
     //confirm numeric values (true/false)
@@ -63,7 +63,7 @@ function writePassword() {
       if(numConfirm) {
       //if true, inform user they decided to use numeric values and return true
         window.alert("You have decided to use numeric values.");
-        string = string + num;
+        finalString = finalString + num;
       };
 
     //confirm special characters (true/false)
@@ -71,11 +71,12 @@ function writePassword() {
     if (charConfirm) {
     //if true, inform user they decided to use special characters and return true
         window.alert("You have decided to use special characters.");
-        string = string + special;
+        finalString = finalString + special;
       };
+
+      console.log(finalString);
   }
       charPrompt();
-      console.log(generatePassword());
 
       // when the password is generated
       // the password is either displayed in an ALERT or written to the page
@@ -93,8 +94,8 @@ function writePassword() {
 
     //use a for loop and Math.random() to generate a random string
     for (var i = 0; i < promptClick; i++) {
-        randomString = Math.floor(Math.random() * string.length);
-        randPassword += string[randomString];
+        randomString = Math.floor(Math.random() * finalString.length);
+        randPassword += finalString[randomString];
     }
     return randPassword;
   }
