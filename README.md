@@ -8,6 +8,8 @@ In my project, I first prompted the user to fill out their desired password by u
 
 The function generatePassword() executes a "for" loop, where the initial "if" statement keeps the "for" loop running for however many times the user has selected. Math.floor(Math.random() * finalString.length) randomly generates a number and determines the character that is chosen next in the loop. It runs however many times it needs to for the password to be generated--if the user wants a 37-character long password, the loop runs 37 times. "finalString" has the concatenated variables for the numbers, characters, and upper and lower cases, and makes them one long array all together. This string is what's executed in the "for" loop, and will change regarding the user's input. "finalString[randString]" returns the value of the array at the given index, and adds them together into the variable randPassword. randPassword is what's returned at the end of the "for" loop, and is the variable created in the function generatePassword().
 
+addendum: When I received comments from the grader after I turned this in, I realized the "else" part of my if/else statement was not working properly. I realized I was using OR (||) in the if statement, when I should have been using AND (&&). After changing that and adding "return charPrompt" to send the user back to the beginning of the function, the if/else statement works properly now!
+
 ## Screenshot
 
 A screenshot of the project: ![project-final-image](./assets/images/java-challenge-final-screenshot.png)
