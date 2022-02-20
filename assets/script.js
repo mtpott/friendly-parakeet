@@ -31,10 +31,11 @@ function writePassword() {
   function charPrompt() {
     promptClick = window.prompt("How many characters would you like to use in your password? You may choose between 8 and 128 characters. Please enter your choice below.");
     //if number entered is less than 8 or greater than 128, proceed to lowercase confirm
-    if (promptClick > 8 || promptClick < 128) {
+    if (promptClick > 7 && promptClick < 129) {
       (lowCaseConfirm);
     } else {
         window.alert("Your number is out of our selected range! Please choose again.");
+        return charPrompt();
     }
 
     // when asked for character types to include in the password
